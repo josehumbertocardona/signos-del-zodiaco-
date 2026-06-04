@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora de Signo Zodiacal</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; padding: 50px; }
+        input { padding: 10px; margin: 10px; }
+        button { padding: 10px 20px; cursor: pointer; background: #007bff; color: white; border: none; }
+        #resultado { font-weight: bold; font-size: 1.5em; margin-top: 20px; color: #333; }
+    </style>
+</head>
+<body>
+
+    <h2>Zodiaco con Fecha Completa</h2>
+    
+    <input type="number" id="anio" placeholder="Año (ej. 1998)">
+    <input type="number" id="mes" placeholder="Mes (1-12)" min="1" max="12">
+    <input type="number" id="dia" placeholder="Día (1-31)" min="1" max="31">
+    
+    <br>
+    <button onclick="calcularSigno()">Descubrir mi signo</button>
+
+    <div id="resultado"></div>
+
+    <script>
+        function calcularSigno() {
+            // Obtenemos los valores de los cuadros de texto
+            let anio = document.getElementById('anio').value;
+            let mes = parseInt(document.getElementById('mes').value);
+            let dia = parseInt(document.getElementById('dia').value);
+            let res = document.getElementById('resultado');
+
+            // Condicionales simples (igual que en PSeInt)
+            let signo = "";
+
+            if ((mes == 3 && dia >= 21) || (mes == 4 && dia <= 20)) {
+                signo = "Aries";
+            } else if ((mes == 4 && dia >= 21) || (mes == 5 && dia <= 21)) {
+                signo = "Tauro";
+            } else if ((mes == 5 && dia >= 22) || (mes == 6 && dia <= 21)) {
+                signo = "Géminis";
+            } else if ((mes == 6 && dia >= 22) || (mes == 7 && dia <= 22)) {
+                signo = "Cáncer";
+            } else if ((mes == 7 && dia >= 23) || (mes == 8 && dia <= 23)) {
+                signo = "Leo";
+            } else if ((mes == 8 && dia >= 24) || (mes == 9 && dia <= 23)) {
+                signo = "Virgo";
+            } else if ((mes == 9 && dia >= 24) || (mes == 10 && dia <= 23)) {
+                signo = "Libra";
+            } else if ((mes == 10 && dia >= 24) || (mes == 11 && dia <= 22)) {
+                signo = "Escorpio";
+            } else if ((mes == 11 && dia >= 23) || (mes == 12 && dia <= 21)) {
+                signo = "Sagitario";
+            } else if ((mes == 12 && dia >= 22) || (mes == 1 && dia <= 20)) {
+                signo = "Capricornio";
+            } else if ((mes == 1 && dia >= 21) || (mes == 2 && dia <= 18)) {
+                signo = "Acuario";
+            } else if ((mes == 2 && dia >= 19) || (mes == 3 && dia <= 20)) {
+                signo = "Piscis";
+            }
+
+            // Mostrar el resultado
+            if (signo !== "" && anio !== "") {
+                res.innerHTML = "Naciste el " + dia + "/" + mes + "/" + anio + "<br>Tu signo es: " + signo;
+            } else {
+                res.innerHTML = "Por favor, completa todos los datos correctamente.";
+            }
+        }
+    </script>
+</body>
+</html>
